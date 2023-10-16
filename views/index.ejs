@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="styles.css" type="text/css" rel="stylesheet">
+    <title>MY APP</title>
+  </head>
+  <body>
+    <div class="grid">
+      <header>
+        <span class="alphabets" id="N">N</span>
+        <span class="alphabets" id="E">E</span>
+        <span class="alphabets"  id="O">O</span>
+        <span class="alphabets" id="B">B</span>
+        <span class="alphabets" id="R">R</span>
+        <span class="alphabets" id="U">U</span>
+        <span class="alphabets" id="T">T</span>
+        <span class="alphabets" id="A">A</span>
+        <span class="alphabets" id="L">L</span>
+        <span class="alphabets" id="I">I</span>
+        <span class="alphabets" id="S">S</span>
+        <span class="alphabets" id="M">M</span>
+        
+      </header>
+      <div class="submit box">        
+        <h1>INSERT QUOTE</h1>
+        <form action="/quotes" method="POST">
+            <input type="text" placeholder="name" name="name" />
+            <input type="text" placeholder="quote" name="quote" />
+            <button id="btn1" type="submit">⁜</button>
+        </form>
+      </div>
+      <div class="update box">
+          <h2>Ben 10 invades!</h2>
+          <p>Replace first my quote with a quote written by Ben 10</p>
+          <button id="update-button">Replace Me's   quote</button>
+      </div>  
+      <div class="delete box">
+        <div class="content">
+          <h2>Remove ben 10!</h2>
+          <p>
+            Delete one ben 10's quote. Does nothing if there are no more ben quote
+            
+          </p>
+          <button id="delete-button">Delete ben 10's quote</button>
+          <div id="message"></div>
+        </div>
+      </div>
+      <div class="list box">
+
+        <div id="strap"><h2>Quotes</h2></div>
+        <ul  class="quotes">    
+        <% for(var i = 0; i < quotes.length; i++) 
+        {%>
+            <li id="quote" class="quote">        
+            <span><%= quotes[i].name %></span>:        
+            <span><%= quotes[i].quote %></span>
+        </li>
+        <% } %>
+        </ul>
+      </div>
+    </div>
+    <script src="/main.js" ></script>
+  </body>
+</html>
