@@ -3,18 +3,14 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')   
 const MongoClient = require('mongodb').MongoClient
+// const dotenv = require('dotenv');
+// dotenv.config();
 
-// Constants
-const PORT = 8080;
-const HOST = '127.0.0.1';
- 
-
-//EDH4uLzaVc2tJdzQ
+const port = process.env.PORT || 8080
 
 app.set('view engine','ejs')
 
-const connectionString = 'mongodb+srv://itsmudassir14:EDH4uLzaVc2tJdzQ@cluster0.mcwltob.mongodb.net/?retryWrites=true&w=majority'
-
+const connectionString = process.env.PASSWORD
 MongoClient.connect(connectionString)
   .then( client => {
     
@@ -24,7 +20,7 @@ MongoClient.connect(connectionString)
     app.use(express.static('public'))
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
-
+    console.log('peepee poopoo')
     app.get('/',(req,res) => {
       db.collection('quotes')
         .find()
@@ -45,7 +41,7 @@ MongoClient.connect(connectionString)
     app.put('/quotes', (req, res) => {
         quotesCollection
         .findOneAndUpdate(
-          {name:'safa'},
+          {name:'me'},
           {
             $set:{
             name:req.body.name,
@@ -76,12 +72,7 @@ MongoClient.connect(connectionString)
           .catch(error => console.error(error))
     })
     
-    app.listen(PORT, HOST, () => {console.log(`Running on http://${HOST}:${PORT}`);})
+    app.listen(port, () => {console.log(`Running on http://localhost:${port}`);})
   })
   .catch(error => console.error(error))
-
-
-    
-
-
 

@@ -10,5 +10,7 @@ RUN npm install
 # RUN npm ci --omit=dev
 # Bundle app source
 COPY . .
+ENV PASSWORD 'mongodb+srv://itsmudassir14:Q@cluster0.mcwltob.mongodb.net/?retryWrites=true&w=majority'
+ENV PORT=8080
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "npm", "run" ,"dev"]
